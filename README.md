@@ -1,7 +1,9 @@
 # FT-Crack
 **FT-Crack** is a Python script for cracking WPA handshakes that have FT-PSK enabled.
 
-[image]
+<p align="center">
+  <img width=50% src="example-image-ftcrack.png" />
+</p>
 
 Traditonally, WPA/WPA2 handshake "crackers" have used the same algorithms in order to calculate the values necessary to determine whether or not a password is correct. However, when [fast BSS transition](https://en.wikipedia.org/wiki/IEEE_802.11r-2008) is enabled for an access point, the algorithms used are no longer the same. The standard tools one might use to crack a WPA/WPA2 handshake (Hashcat, JtR, aircrack) don't currently support fast transition: and that's where **FT-Crack** steps in.
 
@@ -33,7 +35,9 @@ options:
 ## Creating the Hash
 Calculating the correct MIC for an FT-PSK handshake requires a few addtional values: _R0KH-ID, R1KH-ID,_ and a _Mobility Domain Identifier (MDID)_. These values can all be found within the "WPA Key Data" field for the second EAPOL message during a 4-way handshake. Example:
 
-[image]
+<p align="center">
+  <img width=50% src="example-capture-ft-values.png" />
+</p>
 
 Otherwise, constructing the hash "by hand" requires the rest of the normal details: The MIC from the second EAPOL message, the MAC addresses of both the access point and the client, the nonce provided from the access point, and the entire second EAPOL message in the 4-way handshake (with the MIC field set to be all zeroes). From the example image, the hash would end up looking like:
 
