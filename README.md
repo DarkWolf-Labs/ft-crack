@@ -12,7 +12,7 @@ Traditonally, WPA/WPA2 handshake "crackers" have used the same algorithms in ord
 
 `WPA*04*MIC*MAC_AP*MAC_CLIENT*ESSID*NONCE_AP*EAPOL_CLIENT*MESSAGEPAIR*MD-ID*R0KH-ID*R1KH-ID`
 
-and a wordlist and attempts to crack the password. This is to keep the hash in line with the [proposal from ZerBea of hcxtoolsl](https://github.com/hashcat/hashcat/issues/3887), where I got most of my inspiration for creating the tool. Currently it's designed to either read in a hash from the command line, or from a file, and supports only one hash at a time. If you are constructing your own hash from a capture file, ensure that the *EAPOL_CLIENT* portion has the MIC field zero'd out in the hash.
+and a wordlist and attempts to crack the password. This is to keep the hash in line with the [proposal from ZerBea of hcxtools](https://github.com/hashcat/hashcat/issues/3887), where I got most of my inspiration for creating the tool. Currently it's designed to either read in a hash from the command line, or from a file, and supports only one hash at a time. If you are constructing your own hash from a capture file, ensure that the *EAPOL_CLIENT* portion has the MIC field zero'd out in the hash.
 ```
 usage: ft-crack.py [-h] -w WORDLIST [-v] [-q] hashfile
 
