@@ -2,7 +2,7 @@
 **FT-Crack** is a Python script for cracking WPA handshakes that have FT-PSK enabled.
 
 <p align="center">
-  <img width=50% src="example-image-ftcrack.png" />
+  <img width=60% src="example-image-ftcrack.png" />
 </p>
 
 Traditonally, WPA/WPA2 handshake "crackers" have used the same algorithms in order to calculate the values necessary to determine whether or not a password is correct. However, when [fast BSS transition](https://en.wikipedia.org/wiki/IEEE_802.11r-2008) is enabled for an access point, the algorithms used are no longer the same. The standard tools one might use to crack a WPA/WPA2 handshake (Hashcat, JtR, aircrack) don't currently support fast transition: and that's where **FT-Crack** steps in.
