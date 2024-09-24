@@ -52,7 +52,9 @@ I made the choice to have the _MDID_ portion of the hash be in the order that th
 Effectively, "fast transition" is a way of configuring an access point to allow roaming within an environment. The idea was that if the client didn't have to re-prove that it knew the PSK used every time, it would improve performance. For us, this just means that they moved from a value derived from the PSK to values derived from values derived from the PSK.
 
 ### Why make this?
-Hopefully soon, there will be a whole blog post going into more detail on the "why" and the "how". For now, the short story is that I made it in an attempt to be prepared for DEFCON32. While doing some research into possible WiFi attacks and methods, I ended up being unable to find a tool that could crack an FT-PSK handshake. It seemed like the idea had been brought up, but no one had supported it yet. So, I made one.
+The short story is that I made it in an attempt to be prepared for DEFCON32. While doing some research into possible WiFi attacks and methods, I ended up being unable to find a tool that could crack an FT-PSK handshake. It seemed like the idea had been brought up, but no one had supported it yet. So, I made one.
+
+For a little more detail, I was able to talk about how I went about my research [here](https://blog.darkwolfsolutions.com/dws-blog-09-24-2024-ep-14).
 
 ### Why doesn't this work on my hash/file/handshake/XYZ?
 That's a good question! This isn't a robust tool as much as it is a simple script. That being said, it hasn't been _thoroughly_ tested in any rigorous manner, and I can't guarantee it will work in every possible scenario. It was created and tested using the data that I had available to me at the time, but as far as I can tell (until told otherwise) it _should_ work, as long as you have the correct password in a given wordlist and your hash is formatted properly. If it doesn't (and you are positive that you have an FT-PSK handshake), please feel free to let me know, and I can see if I can fix whatever seems to be the problem.
