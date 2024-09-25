@@ -5,7 +5,11 @@
   <img width=60% src="example-image-ftcrack.png" />
 </p>
 
-Traditonally, WPA/WPA2 handshake "crackers" have used the same algorithms in order to calculate the values necessary to determine whether or not a password is correct. However, when [fast BSS transition](https://en.wikipedia.org/wiki/IEEE_802.11r-2008) is enabled for an access point, the algorithms used are no longer the same. The standard tools one might use to crack a WPA/WPA2 handshake (Hashcat, JtR, aircrack) don't currently support fast transition: and that's where **FT-Crack** steps in.
+Traditonally, WPA/WPA2 handshake "crackers" have used the same algorithms in order to calculate the values necessary to determine whether or not a password is correct. However, when [fast BSS transition](https://en.wikipedia.org/wiki/IEEE_802.11r-2008) is enabled for an access point, the algorithms used are no longer the same. The standard tools one might use to crack a WPA/WPA2 handshake (Hashcat, JtR, aircrack) don't currently support fast transition: and that's where **FT-Crack** steps in. Below you can see that while Aircrack recognizes the handshake inside a capture file, it fails to crack it, while **FT-Crack** (albeit slower) can.
+
+<p align="center">
+  <img width=60% src="https://github.com/user-attachments/assets/eb5d240b-531e-41b4-b86c-0e75af40d617" alt="animated" />
+</p>
 
 ## Usage
 **FT-Crack** takes a hash in the format of:
