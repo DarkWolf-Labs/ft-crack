@@ -43,9 +43,27 @@ Calculating the correct MIC for an FT-PSK handshake requires a few addtional val
   <img width=50% src="example-capture-ft-values.png" />
 </p>
 
-Otherwise, constructing the hash "by hand" requires the rest of the normal details: The MIC from the second EAPOL message, the MAC addresses of both the access point and the client, the nonce provided from the access point, and the entire second EAPOL message in the 4-way handshake (with the MIC field set to be all zeroes). From the example image, the hash would end up looking like:
+Otherwise, constructing the hash "by hand" requires the rest of the normal details: The MIC from the second EAPOL message, the MAC addresses of both the access point and the client, the nonce provided from the access point (the nonce provided in the first EAPOL message), and the entire second EAPOL message in the 4-way handshake (with the MIC field set to be all zeroes). For clarity, in our example "hash format", the values would translate to:
+<br>
+<br>
+**MIC**: The generated MIC value from the **second** EAPOL message. In order to be sure that the client knows the password, you would need to see a complete 4-way handshake to ensure the MIC is a valid one.\
+**MAC_AP**: The MAC address of the access point (AP)\
+**MAC_CLIENT**: The MAC address of the client\
+**NONCE_AP**: The "nonce" value provided from the access point to the client in the **first** EAPOL message\
+**EAPOL_CLIENT**: The _entire_ second EAPOL message- which is the one provided from the _client_ back to the AP. This entire message is what's used to calculate the MIC, and so the place where the MIC _would be_ in the message should be "zeroed out"- or swapped for thirty-two 0's.\
+**MESSAGEPAIR**: This part is mostly pointless, but is here to signify (I guess) that the information came from the second of the set of four messages.\
+<br>
+<br>
+Given the example image, the hash would end up looking like:
 
 `WPA*04*a388b0e4a2c733136ea0c9bab7e4d5a2*0e0000000300*020000001000*52464354465f5750415f313172775f3247*404a3a2e777dc1a4c04539b647d58f3b97565bfabc48fe3905e3b2c31fda12db*010300f402010b0000000000000000000176f92e5a482036398e8f01f1aa024e6dc92a5b1ca3fc2f62547e66cdeec64ea70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000095302a0100000fac040100000fac040100000fac04c0000100a6bdd6571a34c9afe11103386e0948cf000fac06360313380037620000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001060e00000003000306524643544653*02*1338*524643544653*0e0000000300`
+
+An easy way to get the _entire_ second EAPOL message is to select the **802.1X Authentication** block, and copy it as a hex stream like shown:
+
+<p align="center">
+  <img width=60% src="https://github.com/user-attachments/assets/9ab3e155-77aa-4e5c-909b-e3af00f35864" />
+</p>
+<br>
 
 I made the choice to have the _MDID_ portion of the hash be in the order that the bytes are within a capture file, not the order that is displayed in the GUI- which means in the example, instead of `3813` my hash has `1338`. As long as all these values are correct and you have an appropriate wordlist, the script should be able to crack it.
 
